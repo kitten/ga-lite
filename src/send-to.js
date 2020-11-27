@@ -1,19 +1,22 @@
-export default function sendTo(url) {
-  if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
-    const didSucceed = navigator.sendBeacon(url)
-    if (didSucceed) {
-      return
-    }
-  }
+function fallbackSendTo(url) {
+  const i = new Image()
+  i.src = url
+}
 
-  try {
-    const req = new window.XMLHttpRequest()
-    req.open('GET', url, false)
-    req.send()
-  } catch (e) {
-    // IE9 throws an error with cross-site XMLHttpRequest so
-    // we fall back to simple image request
-    const i = new window.Image()
-    i.src = url
+export default function sendTo(url) {
+  if (
+    typeof navigator === 'undefined' ||
+    !navigator.sendBeacon ||
+    !navigator.sendBeacon(url)
+  ) {
+    try {
+      const req = new XMLHttpRequest()
+      req.timeout = 5000;
+      req.ontimeout = req.onerror = fallbackSendTo.bind(null, url);
+      req.open('GET', url, true);
+      req.send();
+    } catch (_error) {
+      fallback(url);
+    }
   }
 }
