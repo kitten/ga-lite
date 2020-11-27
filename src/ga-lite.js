@@ -7,7 +7,7 @@ export default function galite(command, ...values) {
   // Check for doNotTrack variable. If it's present, the user has decided to
   // opt-out of the tracking, so we kill this tracking script
   if (doNotTrackEnabled()) {
-    return
+    return false
   }
 
   const [trackerName, trackerCommand] = splitTrackerCommand(command)
@@ -25,8 +25,10 @@ export default function galite(command, ...values) {
     const tracker = getTracker(trackerName)
     command(tracker)
   } else {
-    throw new Error(`Command ${command} is not available in ga-lite`)
+    return false
   }
+
+  return true
 }
 
 function splitTrackerCommand(command) {
