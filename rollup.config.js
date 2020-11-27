@@ -5,8 +5,6 @@ import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import compiler from '@ampproject/rollup-plugin-closure-compiler';
 
-const pkg = require('./package.json');
-
 export const externalModules = ['dns', 'fs', 'path', 'url'];
 if (pkg.peerDependencies)
   externalModules.push(...Object.keys(pkg.peerDependencies));
@@ -17,7 +15,7 @@ const externalPredicate = new RegExp(`^(${externalModules.join('|')})($|/)`);
 
 const config = {
   input: {
-    [pkg.name]: './src/ga-lite.js',
+    'ga-lite': './src/ga-lite.js',
   },
   onwarn() {},
   external: id => externalPredicate.test(id),

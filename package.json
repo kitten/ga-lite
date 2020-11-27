@@ -1,5 +1,5 @@
 {
-  "name": "ga-lite",
+  "name": "@philpl/ga-lite",
   "version": "2.1.0",
   "description": "Small, cacheable subset of Google Analytics JS client",
   "sideEffects": false,
@@ -11,8 +11,7 @@
     "prepublishOnly": "run-s test build",
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "lint:eslint": "eslint ./src/{**/,}*.js ./__tests__/**/*.js",
-    "lint:prettier": "prettier ./src/{**/,}*.js ./__tests__/**/*.js -c",
-    "require-script": "uglifyjs src/require-ga-lite.js --mangle --beautify beautify=false,max_line_len=85"
+    "lint:prettier": "prettier ./src/{**/,}*.js ./__tests__/**/*.js -c"
   },
   "keywords": [
     "google",
