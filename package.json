@@ -1,6 +1,6 @@
 {
   "name": "@philpl/ga-lite",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Small, cacheable subset of Google Analytics JS client",
   "sideEffects": false,
   "main": "dist/ga-lite.js",
@@ -49,8 +49,13 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "eslint": {
-    "extends": ["standard", "prettier"],
-    "plugins": ["standard"]
+    "extends": [
+      "standard",
+      "prettier"
+    ],
+    "plugins": [
+      "standard"
+    ]
   },
   "prettier": {
     "semi": false,
