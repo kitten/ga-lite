@@ -5,12 +5,7 @@
   "jsdelivr": "dist/ga-lite.min.js",
   "main": "dist/ga-lite.min.js",
   "scripts": {
-    "test:browser": "cypress run",
-    "test:unit": "jest ./__tests__/src/*.js",
-    "test": "yarn test:browser && yarn test:unit",
-    "cover": "yarn test:unit --coverage && cat ./coverage/lcov.info | coveralls",
-    "build": "webpack",
-    "release": "./do_release.sh",
+    "test": "jest ./__tests__/src/*.js",
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "lint:eslint": "eslint ./src/{**/,}*.js ./__tests__/**/*.js",
     "lint:prettier": "prettier ./src/{**/,}*.js ./__tests__/**/*.js -c",
@@ -26,12 +21,7 @@
   "author": "Jesse Luoto",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "babel-jest": "^26.3.0",
-    "babel-loader": "^8.1.0",
     "coveralls": "^3.1.0",
-    "cypress": "^6.0.0",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^16.0.0",
@@ -40,10 +30,6 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^5.0.0",
     "jest": "^26.4.2",
-    "prettier": "^2.1.2",
-    "uglify-js": "^3.10.4",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^4.0.0"
+    "prettier": "^2.1.2"
   }
 }
