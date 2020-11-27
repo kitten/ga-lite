@@ -8,11 +8,14 @@
   "scripts": {
     "test": "jest ./__tests__/src/*.js",
     "build": "rollup -c rollup.config.js",
-    "prepublishOnly": "run-s test build",
+    "prepublishOnly": "run-s build",
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "lint:eslint": "eslint ./src/{**/,}*.js ./__tests__/**/*.js",
     "lint:prettier": "prettier ./src/{**/,}*.js ./__tests__/**/*.js -c"
   },
+  "files": [
+    "dist/"
+  ],
   "keywords": [
     "google",
     "analytics",
@@ -44,5 +47,17 @@
     "prettier": "^2.1.2",
     "rollup": "^2.33.3",
     "rollup-plugin-terser": "^7.0.2"
+  },
+  "eslint": {
+    "extends": ["standard", "prettier"],
+    "plugins": ["standard"]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
